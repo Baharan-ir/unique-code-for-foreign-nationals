@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="team@rahteam.ir">
+  <meta name="generator" content="">
+  <title>Generat foreign code</title>
+
+  <link href="bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    .form-generate {
+      max-width: 330px;
+      padding: 1rem;
+    }
+
+    .form-generate .form-floating:focus-within {
+      z-index: 2;
+    }
+  </style>
+</head>
+
+<body class="d-flex align-items-center py-4 bg-body-tertiary">
+  <main class="form-generate w-100 m-auto">
+    <form>
+      <!-- <img class="mb-4" src="https://rahteam.ir/assets/images/landing/logo.png" alt="" width="72" height="57"> -->
+      <h1 class="h3 mb-3 fw-normal">Generat foreign code</h1>
+
+      <div class="form-floating">
+        <input type="text" class="form-control" id="floatingInput" placeholder="9731689951">
+        <label for="floatingInput">Foreign code</label>
+      </div>
+      <br />
+      <button class="btn btn-primary w-100 py-2" type="button" onclick="generate();">Generat!</button>
+      <p class="mt-5 mb-3 text-body-secondary">&copy; rahteam</p>
+    </form>
+  </main>
+  <script>
+    function generate() {
+      var s9 = getRandomInt(0, 9);
+      var s8 = getRandomInt(0, 9);
+      var s7 = getRandomInt(0, 9);
+      var s6 = getRandomInt(0, 9);
+      var s5 = getRandomInt(0, 9);
+      var s4 = getRandomInt(0, 9);
+      var s3 = getRandomInt(0, 9);
+      var s2 = getRandomInt(0, 9);
+      var s1;
+
+      var sumRnd = 90 +
+        (9 * s9) +
+        (8 * s8) +
+        (7 * s7) +
+        (6 * s6) +
+        (5 * s5) +
+        (4 * s4) +
+        (3 * s3) +
+        (2 * s2);
+
+      var mod = sumRnd % 11;
+
+      if (mod < 10) {
+        s1 = mod;
+      } else {
+        s1 = 11 - mod;
+      }
+      document.getElementById('floatingInput').value = "9" + s9 + s8 + s7 + s6 + s5 + s4 + s3 + s2 + s1;
+    }
+
+    function getRandomInt(min, max) {
+      const minCeiled = Math.ceil(min);
+      const maxFloored = Math.floor(max);
+      return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
+    }
+  </script>
+</body>
+
+</html>
